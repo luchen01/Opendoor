@@ -10,14 +10,14 @@ var LocalStrategy = require('passport-local');
 var mongoose = require('mongoose');
 var connect = process.env.MONGODB_URI;
 
-var REQUIRED_ENV = "SECRET MONGODB_URI".split(" ");
-
-REQUIRED_ENV.forEach(function(el) {
-  if (!process.env[el]){
-    console.error("Missing required env var " + el);
-    process.exit(1);
-  }
-});
+// var REQUIRED_ENV = "SECRET MONGODB_URI".split(" ");
+//
+// REQUIRED_ENV.forEach(function(el) {
+//   if (!process.env[el]){
+//     console.error("Missing required env var " + el);
+//     process.exit(1);
+//   }
+// });
 
 
 mongoose.connect(connect);
@@ -84,7 +84,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
 }
 ));
 
-app.use('/', auth(passport));
+// app.use('/', auth(passport));
 app.use('/', routes);
 
 // catch 404 and forward to error handler
